@@ -1,23 +1,19 @@
 import { connect, useDispatch, useSelector } from "react-redux";
-
-import { INCREMENT } from "../redux/counter/actionTypes";
-import {increment,decrement} from '../redux/counter/action'
+import { Ddecrement,Dincrement } from "../redux/Dynamic counter/DynamicAction";
 
 
- export default function Counter({id}) {
+ export default function DynamicCounter({id}) {
 
 // useselector state take reserve kore.... eikhane state.value ta niye amra count er modde peye jabo.
-const count = useSelector(state=>state.counter.value)
-
+const count = useSelector(state=>state.Dcounter.value)
 const dispatch = useDispatch();
 
-const Increment = () =>{
-    dispatch(increment())
-  
+const Increment = (value) =>{
+    dispatch(Dincrement(value))
 }
 
-const Decrement = () =>{
-    dispatch(decrement())
+const Decrement = (value) =>{
+    dispatch(Ddecrement(value))
 }
     return (
         <div className="p-4 h-auto flex flex-col items-center justify-center space-y-5 bg-white rounded shadow">
@@ -25,13 +21,13 @@ const Decrement = () =>{
             <div className="flex space-x-3">
                 <button
                     className="bg-indigo-400 text-white px-3 py-2 rounded shadow"
-                    onClick={()=>Increment()}
+                    onClick={()=>Increment(4)}
                 >
                     Increment
                 </button>
                 <button
                     className="bg-red-400 text-white px-3 py-2 rounded shadow"
-                    onClick={()=>Decrement()}
+                    onClick={()=>Decrement(4)}
                 >
                     Decrement
                 </button>
